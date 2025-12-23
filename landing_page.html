@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowApp - 让工作更高效</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-pattern {
+            background-color: #0f0f23;
+            background-image:
+                radial-gradient(at 47% 33%, hsl(262, 77%, 20%) 0, transparent 59%),
+                radial-gradient(at 82% 65%, hsl(218, 39%, 11%) 0, transparent 55%),
+                radial-gradient(at 15% 75%, hsl(262, 77%, 25%) 0, transparent 50%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">FlowApp</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition">功能</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-purple-600 transition">使用方式</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 transition">价格</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-purple-600 transition">用户评价</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition">联系我们</a>
+                    <button class="gradient-bg text-white px-6 py-2 rounded-full hover:opacity-90 transition">
+                        免费试用
+                    </button>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#features" class="block text-gray-700 hover:text-purple-600">功能</a>
+                <a href="#how-it-works" class="block text-gray-700 hover:text-purple-600">使用方式</a>
+                <a href="#pricing" class="block text-gray-700 hover:text-purple-600">价格</a>
+                <a href="#testimonials" class="block text-gray-700 hover:text-purple-600">用户评价</a>
+                <a href="#contact" class="block text-gray-700 hover:text-purple-600">联系我们</a>
+                <button class="w-full gradient-bg text-white px-6 py-2 rounded-full">
+                    免费试用
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-block px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm mb-6">
+                        <i class="fa fa-rocket mr-2"></i>全新升级 v2.0
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        让工作<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                            更高效、更智能
+                        </span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        FlowApp 是一款革命性的生产力工具，帮助团队简化工作流程，提升协作效率，让创意自由流动。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition pulse-glow">
+                            <i class="fa fa-download mr-2"></i>免费下载
+                        </button>
+                        <button class="border border-white/30 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition">
+                            <i class="fa fa-play mr-2"></i>观看演示
+                        </button>
+                    </div>
+                    <div class="flex items-center gap-8 mt-10">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/100?img=1" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/100?img=2" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/100?img=3" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/100?img=4" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <p class="text-gray-400 text-sm">已有 50,000+ 用户信赖</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative float-animation">
+                    <div class="glass-effect rounded-3xl p-8">
+                        <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 p-3 bg-gray-700/50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
+                                        <i class="fa fa-check text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-white text-sm font-medium">完成项目设计稿</p>
+                                        <p class="text-gray-400 text-xs">今天 14:00</p>
+                                    </div>
+                                    <span class="text-green-400 text-xs">已完成</span>
+                                </div>
+                                <div class="flex items-center gap-4 p-3 bg-gray-700/50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center">
+                                        <i class="fa fa-code text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-white text-sm font-medium">代码审查</p>
+                                        <p class="text-gray-400 text-xs">今天 16:30</p>
+                                    </div>
+                                    <span class="text-yellow-400 text-xs">进行中</span>
+                                </div>
+                                <div class="flex items-center gap-4 p-3 bg-gray-700/50 rounded-lg">
+                                    <div class="w-10 h-10 rounded-lg bg-pink-500 flex items-center justify-center">
+                                        <i class="fa fa-bug text-white"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-white text-sm font-medium">修复登录问题</p>
+                                        <p class="text-gray-400 text-xs">明天 10:00</p>
+                                    </div>
+                                    <span class="text-gray-400 text-xs">待处理</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 mb-8">受到全球顶尖企业的信赖</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-50">
+                <span class="text-2xl font-bold text-gray-400">Google</span>
+                <span class="text-2xl font-bold text-gray-400">Microsoft</span>
+                <span class="text-2xl font-bold text-gray-400">Apple</span>
+                <span class="text-2xl font-bold text-gray-400">Amazon</span>
+                <span class="text-2xl font-bold text-gray-400">Meta</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-purple-600 font-semibold">功能特点</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">强大的功能，简单易用</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    我们精心设计的每一项功能，都是为了让你更专注于真正重要的事情
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl gradient-bg flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">极速同步</h3>
+                    <p class="text-gray-600">所有数据实时同步，多设备无缝切换，随时随地保持工作状态。</p>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl bg-blue-500 flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">团队协作</h3>
+                    <p class="text-gray-600">强大的团队协作功能，让每个人都能高效沟通，共同推进项目。</p>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl bg-pink-500 flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">安全保障</h3>
+                    <p class="text-gray-600">银行级安全加密，保护您的数据安全，让您使用更放心。</p>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl bg-green-500 flex items-center justify-center mb-6">
+                        <i class="fa fa-bar-chart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">数据分析</h3>
+                    <p class="text-gray-600">深入的数据分析报告，帮助您了解团队效率，优化工作流程。</p>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl bg-orange-500 flex items-center justify-center mb-6">
+                        <i class="fa fa-puzzle-piece text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">灵活集成</h3>
+                    <p class="text-gray-600">支持与主流工具集成，扩展性强，适应您的工作方式。</p>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500 flex items-center justify-center mb-6">
+                        <i class="fa fa-mobile text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">多端支持</h3>
+                    <p class="text-gray-600">支持 iOS、Android、Web 等多平台，随时随地访问您的数据。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-purple-600 font-semibold">使用方式</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">简单三步，立即开始</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    无需复杂配置，几分钟即可上手使用
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">注册账户</h3>
+                    <p class="text-gray-600">使用邮箱或社交账号快速注册，只需30秒即可完成</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">创建项目</h3>
+                    <p class="text-gray-600">根据您的需求创建项目，邀请团队成员加入协作</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">开始使用</h3>
+                    <p class="text-gray-600">享受高效的工作体验，提升团队生产力</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-purple-600 font-semibold">价格方案</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">选择适合您的方案</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    灵活的定价方案，满足个人和团队的不同需求
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">免费版</h3>
+                    <p class="text-gray-600 mb-6">适合个人用户</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">¥0</span>
+                        <span class="text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            最多 3 个项目
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            基础协作功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            1GB 存储空间
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            邮件支持
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-full border-2 border-purple-600 text-purple-600 font-semibold hover:bg-purple-50 transition">
+                        开始使用
+                    </button>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border-2 border-purple-600 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 gradient-bg text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        最受欢迎
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">专业版</h3>
+                    <p class="text-gray-600 mb-6">适合小团队</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">¥99</span>
+                        <span class="text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            无限项目数量
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            高级协作功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            100GB 存储空间
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            优先技术支持
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            数据分析报告
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-full gradient-bg text-white font-semibold hover:opacity-90 transition">
+                        立即升级
+                    </button>
+                </div>
+
+                <div class="card-hover bg-white p-8 rounded-2xl border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">企业版</h3>
+                    <p class="text-gray-600 mb-6">适合大型团队</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">¥299</span>
+                        <span class="text-gray-600">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            专业版所有功能
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            无限存储空间
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            专属客户经理
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            定制化服务
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-check text-green-500 mr-3"></i>
+                            SLA 服务保障
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 rounded-full border-2 border-purple-600 text-purple-600 font-semibold hover:bg-purple-50 transition">
+                        联系我们
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-purple-600 font-semibold">用户评价</span>
+                <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">用户的真实反馈</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    听听我们的用户怎么说
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "FlowApp 彻底改变了我们团队的工作方式。自从使用以来，我们的工作效率提升了40%，真是太神奇了！"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=11" class="w-12 h-12 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-900">张伟</p>
+                            <p class="text-gray-500 text-sm">产品经理，某科技公司</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "界面简洁美观，功能强大实用。团队协作功能特别好用，现在我们整个公司都在使用这个工具。"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-900">李娜</p>
+                            <p class="text-gray-500 text-sm">设计总监，创意工作室</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center text-yellow-400 mb-4">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "客户支持团队非常专业，响应速度快。产品更新也很及时，能感受到开发团队的用心。"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?img=13" class="w-12 h-12 rounded-full">
+                        <div>
+                            <p class="font-semibold text-gray-900">王强</p>
+                            <p class="text-gray-500 text-sm">CTO，互联网公司</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">准备好提升您的工作效率了吗？</h2>
+            <p class="text-xl text-white/80 mb-8">
+                立即注册，享受14天免费试用，无需绑定信用卡
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition">
+                    免费开始使用
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition">
+                    预约演示
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-purple-600 font-semibold">联系我们</span>
+                    <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">有任何问题？</h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        我们随时为您解答疑问，欢迎通过以下方式联系我们
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fa fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">邮箱</p>
+                                <p class="text-gray-900 font-medium">contact@flowapp.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fa fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">电话</p>
+                                <p class="text-gray-900 font-medium">400-888-8888</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fa fa-map-marker text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm">地址</p>
+                                <p class="text-gray-900 font-medium">北京市朝阳区科技园区88号</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">姓名</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-purple-500" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">邮箱</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-purple-500" placeholder="请输入您的邮箱">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">留言</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-purple-500" placeholder="请输入您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                            发送消息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">FlowApp</h3>
+                    <p class="text-gray-400 mb-4">
+                        让工作更高效、更智能
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">功能介绍</a></li>
+                        <li><a href="#" class="hover:text-white transition">价格方案</a></li>
+                        <li><a href="#" class="hover:text-white transition">更新日志</a></li>
+                        <li><a href="#" class="hover:text-white transition">API 文档</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">公司</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">关于我们</a></li>
+                        <li><a href="#" class="hover:text-white transition">加入我们</a></li>
+                        <li><a href="#" class="hover:text-white transition">新闻动态</a></li>
+                        <li><a href="#" class="hover:text-white transition">合作伙伴</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">支持</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">帮助中心</a></li>
+                        <li><a href="#" class="hover:text-white transition">联系我们</a></li>
+                        <li><a href="#" class="hover:text-white transition">隐私政策</a></li>
+                        <li><a href="#" class="hover:text-white transition">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 FlowApp. All rights reserved.
+                </p>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">
+                    Made with <i class="fa fa-heart text-red-500"></i> in China
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full gradient-bg text-white shadow-lg hover:opacity-90 transition hidden">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTop.classList.remove('hidden');
+            } else {
+                backToTop.classList.add('hidden');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言！我们会尽快回复您。');
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
